@@ -1,6 +1,9 @@
 openapi: "3.0.0"
 info:
-  description: "Inoffizielle Beschreibung der DRK Blutspendetermine API"
+  description: "### Inoffizielle Beschreibung
+
+    Kostenfreie Service-Hotline: 0800 11 949 11
+    "
   version: "1.0.0"
   title: "DRK Blutspendetermine API"
 
@@ -130,7 +133,7 @@ components:
       name: radius
       schema:
         type: string
-      description: ""
+      description: "Radius ist nur in Kombination mit einer PLZ möglich"
       example: "10"
     county_id:
       in: query
@@ -141,6 +144,7 @@ components:
       # TODO check description
       description: ""
       example: ""
+      # 06411 für Darmstadt (Kreisfreie Stadt)
     term:
       in: query
       required: false
@@ -148,4 +152,10 @@ components:
       schema:
         type: string
       description: ""
-      example: "Darmstadt"
+      examples:
+        Stadtname:
+          value: "Darmstadt"
+          description: Name der Stadt / Ort o.ä.
+        PLZ:
+          value: "64287"
+          description: "Kann in Kombination mit dem Parameter Radius verwendet werden"

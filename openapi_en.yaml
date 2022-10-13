@@ -1,6 +1,10 @@
 openapi: "3.0.0"
 info:
-  description: "Inoffizielle Beschreibung der DRK Blutspendetermine API"
+  description: "### Unofficial specification
+
+
+    Free service hotline:0800 11 949 11
+    "
   version: "1.0.0"
   title: "DRK Blutspendetermine API"
 
@@ -19,7 +23,7 @@ paths:
     get:
       summary: Termine
       operationId: getTermineRSS
-      description: Gibt die Termine in XLM-Format zurück
+      description: Returns the events in XLM format
       tags:
         - termine
       responses:
@@ -43,7 +47,7 @@ paths:
     get:
       summary: Termine
       operationId: getTerminePDF
-      description: Gibt die Termine in als PDF zurück. Der Download via Swagger UI funktioniert aktuell aufgrund eines fehlenden Headers der API nicht. Die generierte URL kann einfach in einem Browser zum Download kopiert werden.
+      description: Returns the events in PDF format. Download via Swagger UI currently does not work due to a missing header of the API. The generated URL can simply be copied in a browser for download.
 
       tags:
         - termine
@@ -130,7 +134,7 @@ components:
       name: radius
       schema:
         type: string
-      description: ""
+      description: "Radius is only possible in combination with a postal code"
       example: "10"
     county_id:
       in: query
@@ -141,6 +145,7 @@ components:
       # TODO check description
       description: ""
       example: ""
+      # 06411 für Darmstadt (Kreisfreie Stadt)
     term:
       in: query
       required: false
@@ -148,4 +153,10 @@ components:
       schema:
         type: string
       description: ""
-      example: "Darmstadt"
+      examples:
+        Stadtname:
+          value: "Darmstadt"
+          description: Name of the city / town or similar
+        PLZ:
+          value: "64287"
+          description: "Can be used in combination with the radius parameter"
